@@ -2,13 +2,19 @@
 #include "matrix.h"
 
 // contrutor default - cria uma matriz vazia com nRows = nCols = 0
-Matrix::Matrix(){
-    ...}
+Matrix::Matrix()
+{
+    nRows = 0;
+    nCols = 0;
+}
 
 // contrutor parametrico 1 - cria uma matriz com nRows  = rows, nCols = cols e
 // com todos os elementos iguais a elem (double)
-Matrix::Matrix(int rows, int cols, double elem){
-    ...}
+Matrix::Matrix(int rows, int cols, double elem)
+{
+    nRows = rows;
+    nCols = cols;
+}
 
 // destrutor
 Matrix::~Matrix()
