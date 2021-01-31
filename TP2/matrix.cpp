@@ -31,9 +31,7 @@ Matrix::Matrix(int rows, int cols, double elem){
 Matrix::~Matrix()
 {
     for(int i=0;i<nRows;i++){
-        for(int j=0;j<nCols;j++){
-            delete[] m[i][j];
-        }
+            delete[] m[i];
     }
     delete[] m;
 }
