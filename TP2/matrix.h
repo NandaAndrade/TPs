@@ -1,6 +1,4 @@
 // matrix.h (header file)
-#include "matrix.cpp"
-#include "main.cpp"
 #include <iostream>
 
 using namespace std;
