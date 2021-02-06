@@ -3,6 +3,8 @@
 #include <time.h>
 #include "Ponto2D.h"
 
+std::map<int, Ponto2D *> pontos;
+
 Ponto2D ::Ponto2D()
 {
     x = 0;

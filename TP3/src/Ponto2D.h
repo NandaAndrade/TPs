@@ -1,8 +1,6 @@
 #include <iostream>
 #include <map>
-class Ponto2D;
 
-std::map<int, Ponto2D *> pontos;
 class Ponto2D
 {
 private:
