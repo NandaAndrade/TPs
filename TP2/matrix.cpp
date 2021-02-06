@@ -59,7 +59,7 @@ void Matrix::print() const
 {
     for(int i=0;i<nRows;i++){
         for(int j=0;j<nCols;j++){
-            cout << m[i][j] << "";
+            cout << m[i][j] << " ";
         }
         cout << endl;
     }
