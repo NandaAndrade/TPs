@@ -12,6 +12,14 @@ Ponto2D :: Ponto2D(double xx, double yy){
     y = yy;
 }
 
+double Ponto2D :: getX() const{
+    return x;
+}
+
+double Ponto2D :: getY() const{
+    return y;
+}
+
 int Ponto2D :: getNextid(){
     //Trocar por Map
     return id;
@@ -45,6 +53,14 @@ inline int Ponto2D :: getid() const{
     return this-> id;
 }
 
-inline void Ponto2D :: setX(double x_){
-    this-> x = x;
+void Ponto2D :: setX(double x_){
+    x = x_;
+}
+
+void Ponto2D :: setY(double y_){
+    y = y_;
+}
+
+void Ponto2D :: print() const{
+    std::cout << "(" << x << "," << y << ")" << std::endl;
 }
