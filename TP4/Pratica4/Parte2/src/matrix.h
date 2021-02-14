@@ -12,10 +12,10 @@ private:
 
 public:
     // Construtores
-    Matrix();
-    Matrix(int rows, int cols, const double& elem =0.0);
+    //Matrix();
+    Matrix(const int rows = 1, const int cols = 1, const double &elem = 0.0);
     Matrix(ifstream &myFile);
-    Matrix(const Matrix& that);
+    Matrix(const Matrix &that);
 
     // destrutor
     ~Matrix();
@@ -23,7 +23,7 @@ public:
     // basic getters
     int getRows() const;
     int getCols() const;
-    double get (int row, int col) const;
+    double get(int row, int col) const;
 
     // other methods
     Matrix transpose();

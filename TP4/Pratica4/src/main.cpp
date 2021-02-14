@@ -19,9 +19,10 @@ int main()
     p1.print();
     Ponto2D p3 = p1.sumPoint(p2);
     p3.print();*/
-    Ponto2D p3 (p1);
+    Ponto2D p3(p1);
     p3.print();
     Ponto2D p4 = p2;
     p4.print();
+
     return 0;
 }
