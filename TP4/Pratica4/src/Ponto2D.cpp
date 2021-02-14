@@ -22,6 +22,7 @@ Ponto2D ::Ponto2D(double xx, double yy)
 Ponto2D :: Ponto2D(const Ponto2D &p2){
     this-> x = p2.x;
     this-> y = p2.y;
+    id = getNextid();
     std::cout << "Entrei no construtor de copia" << std::endl;
 }
 
