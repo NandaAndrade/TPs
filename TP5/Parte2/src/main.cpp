@@ -36,47 +36,47 @@ int main()
     double aux = B.get(1, 1);
     cout << aux << endl;
     A.unit();
+    cout << "Matriz A em indentidade:" << endl;
     A.print();
     A.zeros();
+    cout << "Matriz A em zeros:" << endl;
     A.print();
     A.ones();
-    cout << "Matriz A:" << endl;
+    cout << "Matriz A em uns:" << endl;
     A.print();
-    cout << "Matriz B:" << endl;
+    cout << "Matriz B que é igual a A quando ela era setes:" << endl;
     B.print();
 
-    
-    /*ifstream in("myMatrix.txt"); // Defini que minha matriz possui a primeira linha com as dimensões da matriz a ser lida.
+    ifstream in("myMatrix.txt"); // Defini que minha matriz possui a primeira linha com as dimensões da matriz a ser lida.
     Matrix W(in);
-    W.print();*/
+    W.print();
 
     //double denger = Y.get(2, 2);
     A += B;
-    cout << "Matriz A:" << endl;
+    cout << "Matriz A+B:" << endl;
     A.print();
     Matrix D = Z + Z;
-    cout << "Matriz D:" << endl;
+    cout << "Matriz D=z+z (z e de setes):" << endl;
     D.print();
     D -= Z;
-    cout << "Matriz D:" << endl;
+    cout << "Matriz D-z:" << endl;
     D.print();
     Matrix E = X - D;
-    cout << "Matriz E:" << endl;
+    cout << "Matriz E=(3,2) de zero - D anterior:" << endl;
     E.print();
     D *= 2;
-    cout << "Matriz D:" << endl;
+    cout << "Matriz D*2:" << endl;
     D.print();
-    Matrix F (2,2,2);
+    Matrix F(2, 2, 2);
     cout << "Matriz F:" << endl;
     F.print();
-    Matrix G (2,2,3);
+    Matrix G(2, 2, 3);
     cout << "Matriz G:" << endl;
     G.print();
-    /*Matrix H;
-    H = F*G;
+    Matrix H;
+    H = F * G;
     cout << "Matriz H:" << endl;
-    H.print();*/
-
+    H.print();
 
     return 0;
 }

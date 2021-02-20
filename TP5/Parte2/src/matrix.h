@@ -16,7 +16,7 @@ private:
 public:
     // Construtores
     //Matrix();
-    Matrix( int rows = 1, int cols = 1,const double &elem = 0.0);
+    Matrix(int rows = 1, int cols = 1, const double &elem = 0.0);
     Matrix(ifstream &myFile);
     Matrix(const Matrix &that);
 
@@ -31,15 +31,15 @@ public:
     // other methods
     Matrix transpose();
     void print() const;
-    void unit();
+    void unit(); // colocar codigo de erro para matriz não quadrada
     void zeros();
     void ones();
 
     // sobrecarga de operadores
-    Matrix operator+ (const Matrix& that);
-    Matrix operator- (const Matrix& that);
-    //Matrix& operator* (const Matrix& that); // MORRI NESSE
-    Matrix& operator += (const Matrix& that);
-    Matrix& operator -= (const Matrix& that);
-    void operator *= (const int n);
+    Matrix operator+(const Matrix &that);
+    Matrix operator-(const Matrix &that);
+    Matrix &operator*(const Matrix &that); // MORRI NESSE
+    Matrix &operator+=(const Matrix &that);
+    Matrix &operator-=(const Matrix &that);
+    void operator*=(const int n);
 };

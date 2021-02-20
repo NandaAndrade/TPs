@@ -9,10 +9,10 @@ using namespace std;
 
 // contrutor parametrico 1 - cria uma matriz com nRows  = rows, nCols = cols e
 // com todos os elementos iguais a elem (double)
-Matrix::Matrix( int rows, int cols, const double &elem)
+Matrix::Matrix(int rows, int cols, const double &elem)
 {
-    
-    m = new double * [rows];
+
+    m = new double *[rows];
     nCols = cols;
     nRows = rows;
     for (int i = 1; i <= rows; i++)
@@ -27,11 +27,11 @@ Matrix::Matrix( int rows, int cols, const double &elem)
             m[i][j] = elem;
         }
     }
-    
 }
 
 //Construtor parametrico que cria a matriz a partir do arquivo myFile
-Matrix::Matrix(ifstream &myF){
+Matrix::Matrix(ifstream &myF)
+{
 
     cout << "Entrei no Construtor de Arquivo" << endl;
 
@@ -39,24 +39,25 @@ Matrix::Matrix(ifstream &myF){
     myF.open("myMatrix.txt");
     myF >> rows >> cols;
     cout << rows << ", " << cols << endl;
-    
+
     //Alocação dinâmica para a matriz:
 
-    m = new double * [rows];
+    m = new double *[rows]; //m é um ponteiro de arrays do tamanho rows
     nCols = cols;
     nRows = rows;
     for (int i = 1; i <= rows; i++)
     {
         m[i] = new double[nCols];
     }
-    
+
     //Leitura e armazeenamento dos parametros
-    
+
     for (int i = 1; i <= rows; i++)
     {
         for (int j = 1; j <= nCols; j++)
         {
             myF >> m[i][j];
+            cout << "o elemento " << i << "," << j << " da matriz e: " << m[i][j] << endl;
         }
     }
     cout << "Saí do Construtor de Arquivo" << endl;
@@ -194,58 +195,64 @@ void Matrix::ones()
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 
-Matrix Matrix :: operator+ (const Matrix& that) {
+Matrix Matrix ::operator+(const Matrix &that)
+{
     assert(nRows == that.nRows && nCols == that.nCols);
-    Matrix tmp (nRows, nCols);
-     for (int i = 1; i <= nRows; i++)
-    {
-        for (int j = 1; j <= nCols; j++)
-        {
-            tmp.m[i][j] = this-> m[i][j] + that.m[i][j];
-        }
-    }
-    return tmp;
-}
-
-Matrix Matrix :: operator- (const Matrix& that) {
-    assert(nRows == that.nRows && nCols == that.nCols);
-    Matrix tmp (nRows, nCols);
-     for (int i = 1; i <= nRows; i++)
-    {
-        for (int j = 1; j <= nCols; j++)
-        {
-            tmp.m[i][j] = this-> m[i][j] - that.m[i][j];
-        }
-    }
-    return tmp;
-}
-
-/*Matrix& Matrix :: operator* (const Matrix& that){
-    assert(this-> nCols == that.nRows);
-    Matrix tmp(this-> nRows, that.nCols);
+    Matrix tmp(nRows, nCols);
     for (int i = 1; i <= nRows; i++)
     {
         for (int j = 1; j <= nCols; j++)
         {
-            tmp.m[i][j] = this-> m[i][j] * that.m[j][i];
+            tmp.m[i][j] = this->m[i][j] + that.m[i][j];
         }
     }
     return tmp;
-}*/
+}
 
-void Matrix :: operator*= (const int n){
+Matrix Matrix ::operator-(const Matrix &that)
+{
+    assert(nRows == that.nRows && nCols == that.nCols);
+    Matrix tmp(nRows, nCols);
     for (int i = 1; i <= nRows; i++)
     {
         for (int j = 1; j <= nCols; j++)
         {
-            this->m[i][j] = this-> m[i][j] * n;
+            tmp.m[i][j] = this->m[i][j] - that.m[i][j];
         }
     }
-    
+    return tmp;
 }
 
-Matrix& Matrix :: operator += (const Matrix& that){
-    
+Matrix &Matrix ::operator*(const Matrix &that)
+{
+    assert(this->nCols == that.nRows);
+    Matrix *p;
+    Matrix tmp(this->nRows, that.nCols);
+    for (int i = 1; i <= this->nRows; i++)
+    {
+        for (int j = 1; j <= that.nCols; j++)
+        {
+            tmp.m[i][j] = this->m[i][j] * that.m[j][i];
+        }
+    }
+    p = &tmp;
+    return *p;
+}
+
+void Matrix ::operator*=(const int n)
+{
+    for (int i = 1; i <= nRows; i++)
+    {
+        for (int j = 1; j <= nCols; j++)
+        {
+            this->m[i][j] = this->m[i][j] * n;
+        }
+    }
+}
+
+Matrix &Matrix ::operator+=(const Matrix &that)
+{
+
     assert(nRows == that.nRows && nCols == that.nCols);
     for (int i = 1; i <= nRows; i++)
     {
@@ -257,8 +264,9 @@ Matrix& Matrix :: operator += (const Matrix& that){
     return *this;
 }
 
-Matrix& Matrix :: operator -= (const Matrix& that){
-    
+Matrix &Matrix ::operator-=(const Matrix &that)
+{
+
     assert(nRows == that.nRows && nCols == that.nCols);
     for (int i = 1; i <= nRows; i++)
     {
@@ -269,4 +277,3 @@ Matrix& Matrix :: operator -= (const Matrix& that){
     }
     return *this;
 }
-
