@@ -249,6 +249,18 @@ void Matrix ::operator*=(const int n)
         }
     }
 }
+Matrix &Matrix::operator*=(const Matrix &that)
+{
+    assert(this->nCols == that.nRows);
+    for (int i = 1; i <= this->nRows; i++)
+    {
+        for (int j = 1; j <= that.nCols; j++)
+        {
+            this->m[i][j] = this->m[i][j] * that.m[j][i];
+        }
+    }
+    return *this;
+}
 
 Matrix &Matrix ::operator+=(const Matrix &that)
 {
@@ -277,3 +289,85 @@ Matrix &Matrix ::operator-=(const Matrix &that)
     }
     return *this;
 }
+Matrix &Matrix::operator~()
+{
+    Matrix *p;
+    Matrix M = this->transpose();
+    p = &M;
+    return (*p);
+}
+double &Matrix::operator()(int i, int j)
+{
+    return (m[i][j]);
+}
+bool Matrix::operator==(const Matrix &that)
+{
+    if (this->nRows == that.nRows && this->nCols == that.nCols)
+    {
+        for (int i = 1; i <= nRows; i++)
+        {
+            for (int j = 1; j <= nCols; j++)
+            {
+                if (this->m[i][j] == that.m[i][j])
+                {
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool Matrix::operator!=(const Matrix &that)
+{
+    if (this->nRows == that.nRows && this->nCols == that.nCols)
+    {
+        for (int i = 1; i <= nRows; i++)
+        {
+            for (int j = 1; j <= nCols; j++)
+            {
+                if (this->m[i][j] != that.m[i][j])
+                {
+                    return true;
+                }
+                else
+                {
+                }
+            }
+        }
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+ostream &Matrix::operator<<(ostream &out, const Matrix &that)
+{
+    for (int i = 1; i <= nRows; i++)
+    {
+        for (int j = 1; j <= nCols; j++)
+        {
+            out << m[i][j];
+        }
+    }
+    return out;
+};
+
+istream &Matrix::operator>>(istream &in, const Matrix &that)
+{
+    for (int i = 1; i <= nRows; i++)
+    {
+        for (int j = 1; j <= nCols; j++)
+        {
+            in >> m[i][j];
+        }
+    }
+    return in;
+};

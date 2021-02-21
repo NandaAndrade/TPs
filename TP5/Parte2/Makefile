@@ -1,23 +1,15 @@
-CXX		  := g++
-CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb
+CC=g++
+CFLAGS=-Wall -Wextra
+EXEC=./tp5
+TMPOUT=tp5.testresult
 
-BIN		:= bin
-SRC		:= src
-INCLUDE	:= include
-LIB		:= lib
+.PHONY: all build test clean
 
-LIBRARIES	:=
-EXECUTABLE	:= main
+all: build test clean
 
-
-all: $(BIN)/$(EXECUTABLE)
-
-run: clean all
-	clear
-	./$(BIN)/$(EXECUTABLE)
-
-$(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
-	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)
+build:
+	$(CC) $(CFLAGS) -c src/matrix.cpp -o matrix.o
+	$(CC) $(CFLAGS) src/main.cpp matrix.o -o $(EXEC)
 
 clean:
-	-rm $(BIN)/*
+	rm -rf matrix.o

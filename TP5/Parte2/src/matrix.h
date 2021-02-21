@@ -38,8 +38,15 @@ public:
     // sobrecarga de operadores
     Matrix operator+(const Matrix &that);
     Matrix operator-(const Matrix &that);
-    Matrix &operator*(const Matrix &that); // MORRI NESSE
+    Matrix &operator*(const Matrix &that); //testa
     Matrix &operator+=(const Matrix &that);
     Matrix &operator-=(const Matrix &that);
     void operator*=(const int n);
+    Matrix &operator*=(const Matrix &that);
+    Matrix &operator~(); //retorna a referência a uma matrix criada transposta do argumento
+    double &operator()(int i, int j);
+    bool operator==(const Matrix &that);
+    bool operator!=(const Matrix &that);
+    ostream &operator<<(ostream &out, const Matrix &that);
+    istream &operator>>(istream &in, const Matrix &that);
 };
