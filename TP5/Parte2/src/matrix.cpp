@@ -142,6 +142,16 @@ void Matrix::print() const
     }
 }
 
+Matrix Matrix::diferent(const Matrix &that)
+{
+    that.m[1][1] = 2;
+    that.m[1][2] = 4;
+    that.m[1][3] = 8;
+    that.m[1][4] = 1;
+    that.m[2][1] = 7;
+    return that;
+}
+
 // faz com que a matriz torne-se uma matriz identidade
 void Matrix::unit()
 {
@@ -348,7 +358,7 @@ bool Matrix::operator!=(const Matrix &that)
         return true;
     }
 }
-ostream &Matrix::operator<<(ostream &out, const Matrix &that)
+/*ostream &Matrix::operator<<(ostream &out, const Matrix &that)
 {
     for (int i = 1; i <= nRows; i++)
     {
@@ -360,14 +370,14 @@ ostream &Matrix::operator<<(ostream &out, const Matrix &that)
     return out;
 };
 
-istream &Matrix::operator>>(istream &in, const Matrix &that)
+istream &Matrix::operator>>(const Matrix &that)
 {
     for (int i = 1; i <= nRows; i++)
     {
         for (int j = 1; j <= nCols; j++)
         {
-            in >> m[i][j];
+            this >> m[i][j];
         }
     }
-    return in;
-};
+    return this;
+};*/

@@ -34,19 +34,20 @@ public:
     void unit(); // colocar codigo de erro para matriz não quadrada
     void zeros();
     void ones();
+    Matrix diferent(const Matrix &that);
 
     // sobrecarga de operadores
-    Matrix operator+(const Matrix &that);
-    Matrix operator-(const Matrix &that);
-    Matrix &operator*(const Matrix &that); //testa
-    Matrix &operator+=(const Matrix &that);
-    Matrix &operator-=(const Matrix &that);
-    void operator*=(const int n);
-    Matrix &operator*=(const Matrix &that);
-    Matrix &operator~(); //retorna a referência a uma matrix criada transposta do argumento
-    double &operator()(int i, int j);
-    bool operator==(const Matrix &that);
-    bool operator!=(const Matrix &that);
-    ostream &operator<<(ostream &out, const Matrix &that);
-    istream &operator>>(istream &in, const Matrix &that);
+    Matrix operator+(const Matrix &that); //certo
+    Matrix operator-(const Matrix &that); //certo
+    Matrix &operator*(const Matrix &that); 
+    Matrix &operator+=(const Matrix &that); //certo
+    Matrix &operator-=(const Matrix &that); //certo
+    void operator*=(const int n); //certo
+    Matrix &operator*=(const Matrix &that); //certo
+    Matrix &operator~();
+    double &operator()(int i, int j); //certo
+    bool operator==(const Matrix &that); //certo
+    bool operator!=(const Matrix &that); //certo
+    //ostream &operator<<(const Matrix &that);
+    //istream &operator>>(const Matrix &that);
 };
