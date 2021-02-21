@@ -123,6 +123,7 @@ double Matrix::get(int row, int col) const
 }
 
 // retorna uma matriz transposta
+
 Matrix Matrix::transpose()
 {
     Matrix transposta = Matrix(nCols, nRows, m[1][1]);
@@ -299,13 +300,7 @@ Matrix &Matrix ::operator-=(const Matrix &that)
     }
     return *this;
 }
-Matrix &Matrix::operator~()
-{
-    Matrix *p;
-    Matrix M = this->transpose();
-    p = &M;
-    return (*p);
-}
+
 double &Matrix::operator()(int i, int j)
 {
     return (m[i][j]);
@@ -358,26 +353,32 @@ bool Matrix::operator!=(const Matrix &that)
         return true;
     }
 }
-/*ostream &Matrix::operator<<(ostream &out, const Matrix &that)
+ostream &operator<<(ostream &out, const Matrix &M)
 {
-    for (int i = 1; i <= nRows; i++)
+    for (int i = 1; i <= M.nRows; i++)
     {
-        for (int j = 1; j <= nCols; j++)
+        for (int j = 1; j <= M.nCols; j++)
         {
-            out << m[i][j];
+            out << M.m[i][j] << ' ';
         }
+        out << endl;
     }
     return out;
 };
 
-istream &Matrix::operator>>(const Matrix &that)
+istream &operator>>(istream &in, const Matrix &M)
 {
-    for (int i = 1; i <= nRows; i++)
+    for (int i = 1; i <= M.nRows; i++)
     {
-        for (int j = 1; j <= nCols; j++)
+        for (int j = 1; j <= M.nCols; j++)
         {
-            this >> m[i][j];
+            in >> M.m[i][j];
         }
     }
-    return this;
-};*/
+    return in;
+};
+Matrix operator~(const Matrix &M)
+{
+    Matrix X = M;
+    return X.transpose();
+}

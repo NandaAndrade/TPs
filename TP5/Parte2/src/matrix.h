@@ -39,15 +39,20 @@ public:
     // sobrecarga de operadores
     Matrix operator+(const Matrix &that); //certo
     Matrix operator-(const Matrix &that); //certo
-    Matrix &operator*(const Matrix &that); 
+    Matrix &operator*(const Matrix &that);
     Matrix &operator+=(const Matrix &that); //certo
     Matrix &operator-=(const Matrix &that); //certo
-    void operator*=(const int n); //certo
+    void operator*=(const int n);           //certo
     Matrix &operator*=(const Matrix &that); //certo
-    Matrix &operator~();
-    double &operator()(int i, int j); //certo
-    bool operator==(const Matrix &that); //certo
-    bool operator!=(const Matrix &that); //certo
-    //ostream &operator<<(const Matrix &that);
-    //istream &operator>>(const Matrix &that);
+    double &operator()(int i, int j);       //certo
+    bool operator==(const Matrix &that);    //certo
+    bool operator!=(const Matrix &that);    //certo
+
+    friend ostream &operator<<(ostream &out, const Matrix &M);
+    friend istream &operator>>(istream &in, const Matrix &M);
+    friend Matrix operator~(const Matrix &M);
 };
+
+ostream &operator<<(ostream &out, const Matrix &M);
+istream &operator>>(istream &in, const Matrix &M);
+Matrix operator~(const Matrix &M);
